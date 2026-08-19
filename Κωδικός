@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NOMÂDA — Wear The Journey</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0d0d0d;
+      color: #eee8dc;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 75px;
+      padding: 0 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(13,13,13,0.9);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 25px;
+      letter-spacing: 6px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    nav a {
+      color: #eee8dc;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      padding: 120px 7% 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        radial-gradient(circle at center, #29261f 0%, #111 50%, #080808 100%);
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .small-text {
+      letter-spacing: 5px;
+      font-size: 12px;
+      margin-bottom: 25px;
+      color: #bdb5a5;
+    }
+
+    .hero h1 {
+      font-size: clamp(65px, 13vw, 150px);
+      letter-spacing: 12px;
+      line-height: 0.9;
+    }
+
+    .hero h2 {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-weight: normal;
+      font-size: clamp(24px, 4vw, 45px);
+      margin-top: 25px;
+    }
+
+    .hero p {
+      max-width: 550px;
+      margin: 25px auto 40px;
+      line-height: 1.7;
+      color: #bdb5a5;
+    }
+
+    .button {
+      display: inline-block;
+      background: #eee8dc;
+      color: #111;
+      padding: 17px 35px;
+      text-decoration: none;
+      letter-spacing: 3px;
+      font-size: 12px;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      background: white;
+      transform: translateY(-3px);
+    }
+
+    /* COLLECTION */
+
+    .collection {
+      padding: 110px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title span {
+      font-size: 11px;
+      letter-spacing: 5px;
+      color: #999;
+    }
+
+    .section-title h2 {
+      font-size: clamp(35px, 6vw, 65px);
+      margin-top: 10px;
+      letter-spacing: 4px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .product {
+      background: #151515;
+      padding: 20px;
+    }
+
+    .product-image {
+      height: 420px;
+      background:
+        radial-gradient(circle, #333 0%, #1b1b1b 55%, #111 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* CSS T-SHIRT MOCKUP */
+
+    .shirt {
+      width: 210px;
+      height: 260px;
+      background: #080808;
+      position: relative;
+      clip-path: polygon(
+        25% 0,
+        40% 0,
+        43% 8%,
+        57% 8%,
+        60% 0,
+        75% 0,
+        100% 15%,
+        87% 35%,
+        75% 27%,
+        75% 100%,
+        25% 100%,
+        25% 27%,
+        13% 35%,
+        0 15%
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .shirt-logo {
+      font-size: 18px;
+      letter-spacing: 3px;
+      margin-top: -60px;
+    }
+
+    .product-info {
+      padding: 25px 5px 10px;
+    }
+
+    .product-info h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      color: #c9c1b2;
+      margin-bottom: 20px;
+    }
+
+    .sizes {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .size {
+      border: 1px solid #444;
+      padding: 9px 12px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .size:hover {
+      border-color: #eee8dc;
+    }
+
+    /* MANIFESTO */
+
+    .manifesto {
+      min-height: 600px;
+      padding: 100px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: #e9e1d3;
+      color: #151515;
+    }
+
+    .manifesto div {
+      max-width: 800px;
+    }
+
+    .manifesto h2 {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: clamp(40px, 8vw, 85px);
+      font-weight: normal;
+      margin-bottom: 30px;
+    }
+
+    .manifesto p {
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.8;
+    }
+
+    /* ABOUT */
+
+    .about {
+      padding: 120px 7%;
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about h2 {
+      font-size: 45px;
+      margin-bottom: 30px;
+      letter-spacing: 5px;
+    }
+
+    .about p {
+      line-height: 1.9;
+      color: #aaa;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 60px 7%;
+      border-top: 1px solid #292929;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    footer h3 {
+      letter-spacing: 5px;
+    }
+
+    footer p {
+      color: #777;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    /* MOBILE */
+
+    @media(max-width: 700px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      nav ul {
+        gap: 12px;
+      }
+
+      nav a {
+        font-size: 9px;
+      }
+
+      .logo {
+        font-size: 18px;
+        letter-spacing: 3px;
+      }
+
+      .hero h1 {
+        letter-spacing: 5px;
+      }
+
+      .product-image {
+        height: 360px;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <div class="logo">NOMÂDA</div>
+
+    <ul>
+      <li><a href="#shop">SHOP</a></li>
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="small-text">
+        MADE FOR THE ONES WHO WANDER
+      </div>
+
+      <h1>NOMÂDA</h1>
+
+      <h2>Wear the Journey.</h2>
+
+      <p>
+        Born from movement, freedom and nights that become memories.
+        NOMÂDA is made for those who never stop exploring.
+      </p>
+
+      <a class="button" href="#shop">
+        EXPLORE THE DROP
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- SHOP -->
+
+  <section class="collection" id="shop">
+
+    <div class="section-title">
+      <span>DROP 001</span>
+      <h2>THE FIRST JOURNEY</h2>
+    </div>
+
+
+    <div class="products">
+
+      <div class="product">
+
+        <div class="product-image">
+
+          <div class="shirt">
+            <div class="shirt-logo">
+              NOMÂDA ☾
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="product-info">
+
+          <h3>NOMÂDA Essential Tee</h3>
+
+          <div class="price">
+            €29.90
+          </div>
+
+          <div class="sizes">
+            <div class="size">S</div>
+            <div class="size">M</div>
+            <div class="size">L</div>
+            <div class="size">XL</div>
+          </div>
+
+          <a
+            class="button"
+            href="https://instagram.com/"
+            target="_blank"
+          >
+            ORDER NOW
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BRAND MESSAGE -->
+
+  <section class="manifesto">
+
+    <div>
+
+      <h2>
+        In nature we roam,<br>
+        in rhythm we connect.
+      </h2>
+
+      <p>
+        No destination required.
+        Just movement, music and the freedom
+        to find your own path.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section class="about" id="about">
+
+    <h2>NOMÂDA</h2>
+
+    <p>
+      NOMÂDA is more than clothing.
+      It's a reminder to move freely,
+      discover new places and collect experiences.
+
+      <br><br>
+
+      Created for summer nights, festivals,
+      beaches, road trips and wherever
+      the next journey takes you.
+    </p>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer id="contact">
+
+    <div>
+      <h3>NOMÂDA</h3>
+      <p>WEAR THE JOURNEY.</p>
+    </div>
+
+    <div>
+      <p>Instagram</p>
+      <p>TikTok</p>
+      <p>© 2026 NOMÂDA</p>
+    </div>
+
+  </footer>
+
+</body>
+</html>
